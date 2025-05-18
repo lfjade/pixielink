@@ -1,0 +1,5 @@
+ATIVIDADE:
+Sistema de Registro e Login com Bcrypt em Electron
+Tela de registro (gera hash da senha e salva em JSON)
+Tela de login (valida com bcrypt.compare)
+Sistema de bloqueio após 3 tentativas falhas
