@@ -1,6 +1,43 @@
 [
   {
     "username": "johann",
-    "senha": "$2b$10$qhFpD8U2b.kiFx5pM.SwQeqZOs15HvP86N09TOw1PWSc2vf4PjJ0C"
+    "senha": "$2b$10$qhFpD8U2b.kiFx5pM.SwQeqZOs15HvP86N09TOw1PWSc2vf4PjJ0C",
+    "tentativas": 3,
+    "bloqueado": true
+  },
+  {
+    "username": "teste",
+    "senha": "1234",
+    "tentativas": 1
+  },
+  {
+    "username": "novouser",
+    "senha": "321",
+    "tentativas": 1
+  },
+  {
+    "username": "teste2",
+    "senha": "$2b$10$eL/rzoynJWW50XABXdKdtOuUcwB0pzxCA8QQjOho8GQYnQrcrQ0fC",
+    "tentativas": 1
+  },
+  {
+    "username": "teste3",
+    "senha": "$2b$10$1WTQ.KDaNjCovytlVEObD.hlipb1f2O00V.FRQflpWOJhb40H8BjK",
+    "tentativas": 0
+  },
+  {
+    "username": "teste4",
+    "senha": "$2b$10$6E4LhtCr1LrXA1G6Mw9iX.bZgPTWZ0ivCbM3Oplpj/w/kpwcRsJo6",
+    "tentativas": 0
+  },
+  {
+    "username": "novo",
+    "senha": "$2b$10$mSD3sKaZAX1YBPekQkG4b.xJv3i7vs/vq/cDfCNxN9EhOdNLj9ULq",
+    "tentativas": 0
+  },
+  {
+    "username": "novoteste",
+    "senha": "$2b$10$eqE5vMWLjOkQguE1EHKYZOrYhh9LOioT/oM3gWzY0CG1DSIOOjKQm",
+    "tentativas": 0
   }
 ]

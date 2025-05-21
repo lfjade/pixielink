@@ -29,13 +29,14 @@ function procuraUsuario(username){
 
 // console.log(procuraUsuario("johann"))
 
-function salvarUsuario(username, senhaPlana){
+async function salvarUsuario(username, senhaPlana){
     const usuarios = lerUsuarios()
     if (procuraUsuario(username)) throw new Error ("Usuário já cadastrado.")
     
+        const senhaHash = await bcrypt.hash(senhaPlana, 10)
     usuarios.push({
         username: username,
-        senha: bcrypt.hashSync(senhaPlana, 10),
+        senha: senhaHash,
         tentativas: 0
     })
     
@@ -48,8 +49,7 @@ function testaSenha(username, senhaPlana){
     if (!usuario) return false // aqui posso pensar em um alert pra dizer que deu errado e acho que a logica de bloquear depois de 3 tentativas pode ficar aqui tbm
     
     if (usuario.bloqueado){
-        alert ("Usuário bloqueado.")
-        return false
+        return "Usuário bloqueado."
     }
 
     const senhaCorreta = bcrypt.compareSync(senhaPlana, usuario.senha)
@@ -61,7 +61,8 @@ function testaSenha(username, senhaPlana){
         usuario.tentativas = (usuario.tentativas || 0)+1
         if (usuario.tentativas>=3){
             usuario.bloqueado=true
-            alert ("Usuário bloqueado após 3 tentativas.")
+            fs.writeFileSync(arquivo, JSON.stringify(usuarios, null, 2))
+            return "Usuário bloqueado após 3 tentativas."
         }
         fs.writeFileSync(arquivo, JSON.stringify(usuarios, null, 2))
         return false

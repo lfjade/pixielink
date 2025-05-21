@@ -16,16 +16,24 @@ async function createMainWindow(){
 ipcMain.handle('testa-senha', (event, username, senha) => {
 
     const resultado = testaSenha(username, senha)
-    if (resultado){
+    if (resultado===true){
         return {ok: true}
-    } else if (!resultado){
-        return {ok: false, msg: "Usuário não encontrado ou senha incorreta."}
-    } else if (typeof resultado === 'string'){
+    }
+    if (typeof resultado === 'string'){
         return {ok: false, msg: resultado}
     }
+    return {ok: false, msg: "Usuário não encontrado ou senha incorreta."}
 
 })
 
+ipcMain.handle('salvar-usuario', async (event, username, senha) => {
+    try {
+        await salvarUsuario(username, senha)
+        return { ok: true }
+    } catch (err) {
+        return { ok: false, msg: err.message }
+    }
+});
 
 app.whenReady().then(createMainWindow)
 
